@@ -1,0 +1,36 @@
+{
+  "name": "simple-calendar",
+  "version": "1.0.0",
+  "description": "Simple javascript library to help you create calendars.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node-dev --respawn src/index",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint . --ext .ts"
+  },
+  "keywords": [
+    "calendar",
+    "generator",
+    "typescript",
+    "javascript",
+    "helpers"
+  ],
+  "author": "Marco Martins",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "remove": "^0.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.2",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "rimraf": "^4.1.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5",
+    "vitest": "^0.29.2"
+  }
+}
