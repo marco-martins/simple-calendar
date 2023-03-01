@@ -1,2 +1,3 @@
 import { SimpleCalendar } from "./lib";
-export default SimpleCalendar;
+import { Calendar, Day } from "./types";
+export { SimpleCalendar, Calendar, Day };

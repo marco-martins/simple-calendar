@@ -1,4 +1,6 @@
 {
+  "author": "Marco Martins",
+  "license": "ISC",
   "name": "simple-calendar",
   "version": "1.0.0",
   "description": "Simple javascript library to help you create calendars.",
@@ -17,8 +19,6 @@
     "javascript",
     "helpers"
   ],
-  "author": "Marco Martins",
-  "license": "ISC",
   "dependencies": {
     "date-fns": "^2.29.3",
     "remove": "^0.1.5"
