@@ -7,6 +7,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
+    "prebuild": "rimraf ./dist",
     "start": "ts-node-dev --respawn src/index",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -20,8 +21,7 @@
     "helpers"
   ],
   "dependencies": {
-    "date-fns": "^2.29.3",
-    "remove": "^0.1.5"
+    "date-fns": "^2.29.3"
   },
   "devDependencies": {
     "@types/node": "^18.14.2",
