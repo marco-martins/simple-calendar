@@ -55,7 +55,11 @@ describe("Simple calendar lib", () => {
     it("should return the today date", () => {
       const date = new Date();
       const simpleCalendar = new SimpleCalendar(date);
-      const today = simpleCalendar.calendar.days.at(date.getDay());
+      const dayIndex = simpleCalendar.calendar.days.findIndex(
+        (i) => i.day === 11
+      );
+
+      const today = simpleCalendar.calendar.days.at(dayIndex + 1);
 
       const todayMock = {
         date: new Date(date.setHours(0, 0, 0, 0)),
