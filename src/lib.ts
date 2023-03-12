@@ -11,6 +11,7 @@ import {
   addMonths,
   subMonths,
   isToday,
+  eachYearOfInterval,
 } from "date-fns";
 import { weekDays, weekDaysAbbr } from "./utils";
 import { Calendar, Day } from "./types";
@@ -53,6 +54,12 @@ export class SimpleCalendar {
 
   getSelectedDay(): Day | undefined {
     return this.calendar.days.find((day) => day.isSelected);
+  }
+
+  getYearsRange(startYear: number, endYear: number): number[] {
+    const start = new Date().setFullYear(startYear);
+    const end = new Date().setFullYear(endYear);
+    return eachYearOfInterval({ start, end }).map((date) => date.getFullYear());
   }
 
   private generateCalendar(): Calendar {

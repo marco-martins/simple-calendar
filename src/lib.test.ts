@@ -173,4 +173,15 @@ describe("Simple calendar lib", () => {
       );
     });
   });
+
+  describe("getYearsRange", () => {
+    it("should return a range of years", () => {
+      const date = new Date("2023-02-01");
+      const simpleCalendar = new SimpleCalendar(date);
+      const yearsRange = simpleCalendar.getYearsRange(2018, 2023);
+      expect(yearsRange).toEqual(
+        expect.arrayContaining([2018, 2019, 2020, 2021, 2022, 2023])
+      );
+    });
+  });
 });
