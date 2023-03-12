@@ -10,16 +10,17 @@ import {
   format,
   addMonths,
   subMonths,
-  isToday,
   eachYearOfInterval,
 } from "date-fns";
-import { weekDays, weekDaysAbbr } from "./utils";
-import { Calendar, Day } from "./types";
+import { Calendar } from "./types/calendar";
+import { Day } from "./types/day";
 
 export class SimpleCalendar {
+  date: Date;
   calendar!: Calendar;
 
-  constructor(private date: Date) {
+  constructor({ date = new Date() }: { date?: Date } = {}) {
+    this.date = date;
     this.generateCalendar();
   }
 
@@ -33,15 +34,7 @@ export class SimpleCalendar {
     return this.generateCalendar();
   }
 
-  isSameDay(dateA: Date, dateB: Date): boolean {
-    return isSameDay(dateA, dateB);
-  }
-
-  isToday(date: Date): boolean {
-    return isToday(date);
-  }
-
-  setSelectedDay(date: Date): Calendar {
+  setSelectedDay({ date }: { date: Date }): Calendar {
     this.calendar.selectedDay = date;
 
     const days = this.calendar.days.map((day) => ({
@@ -56,20 +49,60 @@ export class SimpleCalendar {
     return this.calendar.days.find((day) => day.isSelected);
   }
 
-  getYearsRange(startYear: number, endYear: number): number[] {
-    const start = new Date().setFullYear(startYear);
-    const end = new Date().setFullYear(endYear);
-    return eachYearOfInterval({ start, end }).map((date) => date.getFullYear());
+  getWeekDays({ short = false }: { short?: boolean } = {}): string[] {
+    const weekDays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    return short ? weekDays.map((wday) => wday.slice(0, 3)) : weekDays;
+  }
+
+  getMonths({ short = false }: { short?: boolean } = {}): string[] {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return short ? months.map((month) => month.slice(0, 3)) : months;
+  }
+
+  getYears({
+    startYear,
+    endYear,
+    short,
+  }: {
+    startYear: number | string;
+    endYear: number | string;
+    short?: boolean;
+  }): string[] {
+    const start = new Date().setFullYear(+startYear);
+    const end = new Date().setFullYear(+endYear);
+    const years = eachYearOfInterval({ start, end }).map((date) =>
+      date.getFullYear().toString()
+    );
+    return short ? years.map((month) => month.slice(-2)) : years;
   }
 
   private generateCalendar(): Calendar {
     return (this.calendar = {
       year: getYear(this.date),
-      yearAbbr: +format(this.date, "yy"),
+      yearShort: +format(this.date, "yy"),
       month: format(this.date, "MMMM"),
-      monthAbbr: format(this.date, "MMM"),
-      weekDays: weekDays(),
-      weekDaysAbbr: weekDaysAbbr(),
+      monthShort: format(this.date, "MMM"),
       selectedDay: this.calendar?.selectedDay,
       days: this.generateDays(this.date),
     });

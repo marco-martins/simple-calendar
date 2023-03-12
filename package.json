@@ -4,7 +4,7 @@
   "name": "simple-calendar",
   "version": "1.0.0",
   "description": "Simple javascript library to help you create calendars.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marco-martins/simple-calendar"
