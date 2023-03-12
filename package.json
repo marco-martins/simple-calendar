@@ -5,6 +5,14 @@
   "version": "1.0.0",
   "description": "Simple javascript library to help you create calendars.",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marco-martins/simple-calendar"
+  },
+  "bugs": {
+    "url": "https://github.com/marco-martins/simple-calendar/issues"
+  },
+  "homepage": "https://github.com/marco-martins/simple-calendar#readme",
   "scripts": {
     "build": "tsc",
     "prebuild": "rimraf ./dist",
